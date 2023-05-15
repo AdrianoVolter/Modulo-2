@@ -1,0 +1,12 @@
+{
+    "produtos":[
+        {
+            "caneta": "Bic",
+            "cor": "Azul"
+        },
+        {
+            "caneta": "Bic",
+            "cor": "Preta"
+        }
+    ]
+}
