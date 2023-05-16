@@ -1,0 +1,11 @@
+{
+  "name": "m2-s03",
+  "version": "1.0.0",
+  "description": "exercicio semana 3 modulo-02",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adriano Volter",
+  "license": "ISC"
+}
