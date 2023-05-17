@@ -13,27 +13,29 @@ function lerDados() {
    }
 
 
-http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
   res.writeHead(200, {'Content-Type': 'text/plain'})
   res.end("<>Hello World!")
-}).listen(3050)
-
-switch (req.method) {
-
-    case 'GET':
-
-       // aqui vai a lógica do GET - exercício 5
-    break
-
-    case 'POST':
-
-       // aqui vai a lógica do POST - exercício 7
-    break
-
-}
 
 
+   switch (req.method) {
 
+      case 'GET':
+         response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' }) // aqui vai a lógica do GET - exercício 6
+         response.write(lerDados()) 
+         response.end()    
+
+      break
+
+      case 'POST':
+
+         // aqui vai a lógica do POST - exercício 7
+      break
+
+   }
+
+})
+server.listen(3050)
 
 console.log("Servidor rodando na porta 'http://localhost:3050'")
   
