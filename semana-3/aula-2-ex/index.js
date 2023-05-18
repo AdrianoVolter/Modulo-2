@@ -24,9 +24,7 @@ const server = http.createServer((request, response) => {
     switch(request.url){
         case '/':
             response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-            response.write('<h1>Olá mundo</h1>');
-            response.write(`<h1>${request.url}</h1>`);
-            response.end();
+            response.end(`<h1>${request.url}</h1>`);
             break;
         case '/usuario':
             switch(request.method){
