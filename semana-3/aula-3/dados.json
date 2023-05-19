@@ -1,1 +1,1 @@
-{"produtos":[{"nome":"Caneta","preco":2,"marca":"BIC","cor":"azul"},{"nome":"óculos","preco":500,"marca":"FOSOCO","cor":"preto"}]}
+{"produtos":[{"nome":"Caneta","preco":5,"marca":"BIC-oo","cor":"vermelha","id":1},{"nome":"óculos","preco":500,"marca":"FOSOCO","cor":"preto","id":2},{"nome":"Pente","preco":1,"marca":"fino","cor":"cinza","id":3},{"nome":"Pente","preco":1,"marca":"fino","cor":"cinza","id":4},{"nome":"óculos","preco":2500,"marca":"Raybam","cor":"Roxo","id":5}]}
