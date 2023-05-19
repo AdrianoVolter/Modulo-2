@@ -3,6 +3,16 @@ const http = require('http');
 const fs = require('fs');
 const querystring = require('querystring');
 
+/**
+ * 
+ * @returns {string} Retorna uma string com todos os produtos cadastrados
+ * @description Essa função lê o arquivo dados.json e retorna uma string com todos os produtos cadastrados
+ * @example
+ * listarProdutos()
+ * // retorna uma string com todos os produtos cadastrados
+ */
+
+
 function listarProdutos(){
     try {
         const dados = JSON.parse(fs.readFileSync("dados.json", "utf-8"))
@@ -12,7 +22,17 @@ function listarProdutos(){
       }
     }
 
-
+/**
+ * 
+ * @param {string} novoProduto - Um objeto JSON com os dados do novo produto
+ * @returns {string} Retorna uma string com uma mensagem de sucesso ou erro
+ * @description Essa função recebe um objeto JSON com os dados do novo produto e salva no arquivo dados.json
+ * @example
+ * CriarProduto('{"nome": "Produto 1", "preco": 10}')
+ * // retorna uma string com uma mensagem de sucesso ou erro
+ *  
+ * 
+  */
 
 function CriarProduto(novoProduto){
     try {
@@ -24,6 +44,38 @@ function CriarProduto(novoProduto){
         return "Erro ao executar"
       }
     }
+
+
+function EditarProduto(produto){
+  try {
+    const dados = JSON.parse(fs.readFileSync("dados.json", "utf-8"))
+    const produtoEditado = JSON.parse(produto)
+    let indice = dados.produtos.findIndex((produto) => produto.id == produtoEditado.id)
+    dados.produtos[indice] = produtoEditado
+    fs.writeFileSync("dados.json", JSON.stringify(dados))
+    return "Produto editado com sucesso!"
+  }
+  catch {
+    return "Erro ao executar"
+  }
+
+}
+
+function DeletarProduto(id){
+  try {
+    const dados = JSON.parse(fs.readFileSync("dados.json", "utf-8"))
+    let indice = dados.produtos.findIndex((produto) => produto.id == id)
+    dados.produtos.splice(indice, 1)
+    fs.writeFileSync("dados.json", JSON.stringify(dados))
+    return "Produto deletado com sucesso!"
+  }
+  catch {
+    return "Erro ao executar"
+  }
+
+}
+
+
 const server = http.createServer((request, response) => {
     if(request.url == "/produto"){
         switch(request.method){
@@ -32,8 +84,10 @@ const server = http.createServer((request, response) => {
                 response.end(listarProdutos())
               break
             case "POST":
+
+            // CriarProduto('{"nome": "Produto 1", "preco": 10}')
                 let data = ''
-                request.on("data", (chunk) => {
+                request.on("data", (chunk) => { // chunk é um pedaço dos dados que estão sendo enviados
                 data += chunk
                 })
                 request.on("end", () => {
@@ -44,12 +98,28 @@ const server = http.createServer((request, response) => {
 
               break
             case "PUT":
-                response.writeHead(200, {"Content-Type": "text/plain; charset: utf-8;"})
-                response.end("Você está no endpoint de produtos e está realizando um PUT")
+              let produtoPUT = ''
+              request.on("data", (chunk) => { // chunk é um pedaço dos dados que estão sendo enviados
+              produtoPUT += chunk
+              })
+              request.on("end", () => {
+              response.writeHead(200, {"Content-Type": "text/plain; charset: utf-8;"})
+              response.end(EditarProduto(produtoPUT))
+              })
+
+                
               break
             case "DELETE":
-                response.writeHead(200, {"Content-Type": "text/plain; charset: utf-8;"})
-                response.end("Você está no endpoint de produtos e está realizando um DELETE")
+              let produtoDELETE = ''
+              request.on("data", (chunk) => { // chunk é um pedaço dos dados que estão sendo enviados
+              produtoDELETE += chunk
+              })
+              request.on("end", () => {
+              response.writeHead(200, {"Content-Type": "text/plain; charset: utf-8;"})
+              response.end(DeletarProduto(produtoDELETE))
+              })
+
+
               break
             
           }
