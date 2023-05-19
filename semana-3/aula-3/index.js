@@ -58,8 +58,23 @@ function EditarProduto(produto){
   catch {
     return "Erro ao executar"
   }
-  
+
 }
+
+function DeletarProduto(id){
+  try {
+    const dados = JSON.parse(fs.readFileSync("dados.json", "utf-8"))
+    let indice = dados.produtos.findIndex((produto) => produto.id == id)
+    dados.produtos.splice(indice, 1)
+    fs.writeFileSync("dados.json", JSON.stringify(dados))
+    return "Produto deletado com sucesso!"
+  }
+  catch {
+    return "Erro ao executar"
+  }
+
+}
+
 
 const server = http.createServer((request, response) => {
     if(request.url == "/produto"){
@@ -95,9 +110,15 @@ const server = http.createServer((request, response) => {
                 
               break
             case "DELETE":
-                
-                response.writeHead(200, {"Content-Type": "text/plain; charset: utf-8;"})
-                response.end("Você está no endpoint de produtos e está realizando um DELETE")
+              let produtoDELETE = ''
+              request.on("data", (chunk) => { // chunk é um pedaço dos dados que estão sendo enviados
+              produtoDELETE += chunk
+              })
+              request.on("end", () => {
+              response.writeHead(200, {"Content-Type": "text/plain; charset: utf-8;"})
+              response.end(DeletarProduto(produtoDELETE))
+              })
+
 
               break
             
