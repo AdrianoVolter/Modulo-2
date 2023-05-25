@@ -1,7 +1,9 @@
-const express = require('express');
-const useRouterV1 = express.Router();
-const userController = require('../../controllers/user');
+const express = require('express')
+const userRoutesV1 = express.Router()
+const { listaDeUsuarios, criarBaseDeDadosDeUsuario } = require('../../controllers/user')
 
-useRouterV1.get('/user/listaDeUsuarios', userController.listarUsuarios);
+userRoutesV1.get('/user/listaDeUsuarios/:nomeDoArquivo', listaDeUsuarios)
+userRoutesV1.post('/user/criarArquivo', criarBaseDeDadosDeUsuario)
+userRoutesV1.get('/', (req, res) => res.send('Olá, mundo!'))
 
-module.exports = router;
+module.exports = userRoutesV1
