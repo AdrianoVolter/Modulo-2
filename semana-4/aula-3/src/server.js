@@ -7,4 +7,4 @@ const PORT = 3333
 app.use(express.json())
 app.use(rotas)
 
-app.listen(PORT, () => console.log(`Servidor ligado na porta ${PORT}`))
+app.listen(PORT, () => console.log(`Servidor ligado na porta http://localhost:${PORT}`))
