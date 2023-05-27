@@ -7,9 +7,7 @@ const PORT = 3000
 app.use(express.json())
 // app.use(rotas)
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+
 
 app.use(router)
 

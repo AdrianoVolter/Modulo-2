@@ -33,6 +33,11 @@ module.exports = {
         lista = nomes
         return res.status(200).json(lista)
         
+    },
+
+    async listarData (req, res) {
+        res.send('Hello World!')
+        console.log('teste')
     }
     
 }
