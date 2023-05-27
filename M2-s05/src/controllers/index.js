@@ -33,6 +33,27 @@ module.exports = {
         lista = nomes
         return res.status(200).json(lista)
         
+    },
+
+    async listarData (req, res) {
+        const  mes  = parseInt(req.params.mes)
+        const  ano  = new Date().getFullYear()
+
+        if(mes < 1 || mes > 12){
+            return res.status(400).json({error: 'Mês inválido'})
+        }
+
+        const diaDoMes = new Date(ano, mes ,0).getDate()
+        const datas = []
+
+        for (let dia = 1; dia <= diaDoMes; dia++) {
+            const data = `${dia.toString().padStart(2, '0')}/${mes.toString().padStart(2, '0')}/${ano}`
+            datas.push(data)
+        }
+
+        res.status(200).json(datas)
+        
+
     }
     
 }
