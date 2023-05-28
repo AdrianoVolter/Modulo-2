@@ -54,7 +54,26 @@ module.exports = {
         res.status(200).json(datas)
         
 
-    }
+    },
+    async saveJson(req, res) {
+        const fs = require('fs');
+        const filePath = './data.json';
+        let jsonData = [];
+    
+        // Read the existing data from the file, if it exists
+        if (fs.existsSync(filePath)) {
+          const rawData = fs.readFileSync(filePath);
+          jsonData = JSON.parse(rawData);
+        }
+    
+        // Add the new data to the existing data
+        jsonData.push(req.body);
+    
+        // Write the updated data to the file
+        fs.writeFileSync(filePath, JSON.stringify(jsonData));
+    
+        res.send('Data saved successfully');
+      },
     
 }
     
