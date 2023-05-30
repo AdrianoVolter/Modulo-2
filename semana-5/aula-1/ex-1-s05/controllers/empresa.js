@@ -46,14 +46,7 @@ module.exports = {
         return res.status(200).send({mensagem: "Empresa salva com sucesso!"})
       })
 
-
-
     },
-
-// crie um endpoint que liste as empresas salvas no arquivo .json do exercício anterior
-// A listagem, se houver itens, deve retornar um código 200 e juntamente com esses items;
-// Se não houver itens, deve retornar uma lista vazia com o código 204;
-// A listagem deve permitir um filtro por nomeFantasia
 
     async listarEmpresas(req, res) {
       const fs = require("fs")
@@ -73,7 +66,43 @@ module.exports = {
         }
         return res.status(200).send(empresas)
       })
+    },
+
+    async alterarEmpresa(req, res) {
+      const fs = require("fs")
+      const {cnpj} = req.params
+      const {nomeFantasia, dataDeCriacao} = req.body
+      if(!nomeFantasia && !dataDeCriacao){
+        return res.status(400).send({erro: "Faltam campos!"})
+      }
+      if(fs.existsSync("empresas.json") === false){
+        return res.status(204).send({mensagem: "Não há empresas salvas!"})
+      }
+      fs.readFile("empresas.json", "utf8", (err, data) => {
+        if(err){
+          return res.status(400).send({erro: err})
+        }
+        const empresas = JSON.parse(data)
+        const empresa = empresas.find(empresa => empresa.cnpj === cnpj)
+        if(!empresa){
+          return res.status(400).send({erro: "Empresa não encontrada!"})
+        }
+        if(nomeFantasia){
+          empresa.nomeFantasia = nomeFantasia
+        }
+        if(dataDeCriacao){
+          empresa.dataDeCriacao = dataDeCriacao
+        }
+        fs.writeFile("./empresas.json", JSON.stringify(empresas), (err) => {
+          if(err){
+            return res.status(400).send({erro: err})
+          }
+          console.log("Arquivo atualizado com sucesso!")
+        })
+        return res.status(200).send({mensagem: "Empresa alterada com sucesso!"})
+      })
     }
 
+    
 }
   
