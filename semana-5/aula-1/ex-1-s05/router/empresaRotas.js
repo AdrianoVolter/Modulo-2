@@ -5,10 +5,11 @@ const { Router } = require('express')
  outras APIs/Frontend
 */
 const rotasDaEmpresa = Router()
-const { criarEmpresa, verificarEmpresa, salvarEmpresa } = require('../controllers/empresa')
+const { criarEmpresa, verificarEmpresa, salvarEmpresa,listarEmpresas} = require('../controllers/empresa')
 
 rotasDaEmpresa.post('/empresa/criarEmpresa', criarEmpresa, verificarEmpresa)
 rotasDaEmpresa.post('/empresa/salvarEmpresa', salvarEmpresa)
+rotasDaEmpresa.get('/empresa/listarEmpresas', listarEmpresas)
 
 
 module.exports = rotasDaEmpresa

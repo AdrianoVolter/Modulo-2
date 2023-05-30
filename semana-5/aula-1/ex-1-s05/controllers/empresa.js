@@ -48,8 +48,32 @@ module.exports = {
 
 
 
+    },
+
+// crie um endpoint que liste as empresas salvas no arquivo .json do exercício anterior
+// A listagem, se houver itens, deve retornar um código 200 e juntamente com esses items;
+// Se não houver itens, deve retornar uma lista vazia com o código 204;
+// A listagem deve permitir um filtro por nomeFantasia
+
+    async listarEmpresas(req, res) {
+      const fs = require("fs")
+      const {nomeFantasia} = req.query
+      if(fs.existsSync("empresas.json") === false){
+        
+        return res.status(204).send({mensagem: "Não há empresas salvas!"})
+      }
+      fs.readFile("empresas.json", "utf8", (err, data) => {
+        if(err){
+          return res.status(400).send({erro: err})
+        }
+        const empresas = JSON.parse(data)
+        if(nomeFantasia){
+          const empresasFiltradas = empresas.filter(empresa => empresa.nomeFantasia === nomeFantasia)
+          return res.status(200).send(empresasFiltradas)
+        }
+        return res.status(200).send(empresas)
+      })
     }
 
-
-  }
+}
   
