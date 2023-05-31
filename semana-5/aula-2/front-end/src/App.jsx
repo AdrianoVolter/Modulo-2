@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useEffect } from 'react';
-
 //import './App.css'
 
 function App() {
+  // const [lista, setLista] = useState([])
   useEffect(() => {
     const load = async() => {
-      const response = await axios.post('http://localhost:3333/criarEmpresa')
+      const response = await axios.get('http://localhost:3333/empresa/listarEmpresas')
       console.log(response)
     }
     load()
@@ -15,9 +15,7 @@ function App() {
 
   return (
     <>
-     <h1>
-        Hello World
-     </h1>
+      <h1>Olá Mundo</h1>
     </>
   )
 }
