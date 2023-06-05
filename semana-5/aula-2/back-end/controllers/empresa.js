@@ -101,6 +101,32 @@ module.exports = {
         })
         return res.status(200).send({mensagem: "Empresa alterada com sucesso!"})
       })
+    },
+    async deletarEmpresa(req, res) {
+      const fs = require("fs")
+      const {cnpj} = req.params
+      if(fs.existsSync("empresas.json") === false){
+        return res.status(204).send({mensagem: "Não há empresas salvas!"})
+      }
+      fs.readFile("empresas.json", "utf8", (err, data) => {
+        if(err){
+          return res.status(400).send({erro: err})
+        }
+        const empresas = JSON.parse(data)
+        const empresa = empresas.find(empresa => empresa.cnpj === cnpj)
+        if(!empresa){
+          return res.status(400).send({erro: "Empresa não encontrada!"})
+        }
+        const indice = empresas.indexOf(empresa)
+        empresas.splice(indice, 1)
+        fs.writeFile("./empresas.json", JSON.stringify(empresas), (err) => {
+          if(err){
+            return res.status(400).send({erro: err})
+          }
+          console.log("Arquivo atualizado com sucesso!")
+        })
+        return res.status(200).send({mensagem: "Empresa deletada com sucesso!"})
+      })
     }
 
     

@@ -1,1 +1,12 @@
-[{"cnpj":"12345678901234","nomeFantasia":"Acme 50.","dataDeCriacao":"2013-05-29"},{"cnpj":"000000000002252","nomeFantasia":"Acme 1.","dataDeCriacao":"2023-03-15"},{"cnpj":"000000000002252","nomeFantasia":"Acme 1.","dataDeCriacao":"2023-03-15"},{"cnpj":"000000000005","nomeFantasia":"Acme 3.","dataDeCriacao":"2023-03-15"},{"cnpj":"000000000004","nomeFantasia":"Acme 2.","dataDeCriacao":"2013-04-15"}]
+[
+  {
+    "cnpj": "000000000002252",
+    "nomeFantasia": "Acme 1.",
+    "dataDeCriacao": "2023-03-15"
+  },
+  {
+    "cnpj": "000000000005",
+    "nomeFantasia": "Acme 3.",
+    "dataDeCriacao": "2023-03-15"
+  }
+]

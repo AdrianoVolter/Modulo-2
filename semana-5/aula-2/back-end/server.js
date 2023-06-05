@@ -7,6 +7,8 @@ const PORT = 3333;
 app.use(cors());
 app.use(express.json());
 app.use(rotasDaEmpresa);
+app.use(express.static('public'));
+app.use(express.static('public/images'));
 
 
 app.listen(PORT, () => {
