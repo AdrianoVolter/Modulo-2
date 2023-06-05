@@ -1,1 +1,24 @@
-[{"id":1,"name":"Pedro","age":25,"job":"Developer","state":"Santa Catarina"},{"id":1,"name":"Pedro Jose","age":22,"job":"Dev Jr","state":"Santa"},{"id":1,"name":"Pedro Jose","age":22,"job":"Dev Jr","state":"Santa"},{"id":4,"name":"Danilo","age":23,"job":"Developer","state":"Santa Catarina"},{"id":5,"name":"Luisa","age":31,"job":"UX Designer","state":"Santa Catarina"},{"name":"Vitoria Maria","age":45,"job":"Lead","state":"Rio Grande"}]
+[
+  {
+    "id": 1,
+    "name": "Pedro",
+    "age": 25,
+    "job": "Developer",
+    "state": "Santa Catarina"
+  },
+  {
+    "id": 3,
+    "name": "Pedro Jose",
+    "age": 22,
+    "job": "Dev Jr",
+    "state": "Santa"
+  },
+  {
+    "id": 4,
+    "name": "Danilo",
+    "age": 23,
+    "job": "Developer",
+    "state": "Santa Catarina"
+  },
+  {"id":5, "name": "Vitoria Maria", "age": 45, "job": "Lead", "state": "Rio Grande" }
+]
