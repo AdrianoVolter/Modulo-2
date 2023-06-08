@@ -72,6 +72,28 @@ CREATE TABLE Livro (
 
 select * from Livro;
 
+-- genero romance, aventura, e ficcao usando check
+CREATE TABLE Genero (
+  id INT PRIMARY KEY, -- id do genero
+  tipo VARCHAR(100)  -- tipo do genero
+  check (tipo in ('Romance', 'Aventura', 'Ficcao')) -- check para verificar se o valor esta dentro do tipo
+);
+
+-- genero romance, aventura, e ficcao usando enum
+-- CREATE TYPE GeneroEnum as ENUM ('Romance', 'Aventura', 'Ficcao'); -- criando o tipo enum
+
+-- CREATE TABLE Genero (
+--   id INT PRIMARY KEY, -- id do genero
+--   tipo GeneroEnum  -- tipo do genero
+-- );
+
+select * from Genero;
+
+-- inserire dadaos genero
+INSERT into Genero (id, tipo) values --
+    (1, 'Romance'), -- inserindo os valores
+    (2, 'Aventura'), -- inserindo os valores
+    (3, 'Ficcao');      -- inserindo os valores
 
 -- Inserir um valor em Editora
 INSERT into Editora (nome, pais, fundacao) values
