@@ -39,3 +39,10 @@ select cliente.nome, pedidos.data from cliente left join pedidos on cliente.id =
 
 select cliente.nome, pedidos.data from cliente inner join pedidos on cliente.id = pedidos.id_cliente;
 
+select count(*) from cliente left join pedidos on cliente.id = pedidos.id_cliente;
+
+select count(*) from cliente left join pedidos on cliente.id = pedidos.id_cliente where pedidos.id is null;
+
+select count(*) from cliente left join pedidos on cliente.id = pedidos.id_cliente where pedidos.id is not null;
+
+select cliente.nome as cliente, pedidos.data as pedido from cliente left join pedidos on cliente.id = pedidos.id_cliente where pedidos.id is not null;
