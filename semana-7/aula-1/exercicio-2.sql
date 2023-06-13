@@ -85,14 +85,34 @@ select * from Alocacoes;
 -- -(x) Selecione o nome do funcionário, o nome do departamento e a data de início da alocação para todos os funcionários atualmente alocados em algum departamento (DataFim é nulo):
 -- -(x) Selecione o nome do departamento e a quantidade de funcionários atualmente alocados em cada departamento:
 
-select f.Nome, d.Nome from Funcionarios f 
-inner join Alocacoes a on f.ID_Funcionario = a.ID_Funcionario 
-inner join Departamentos d on a.ID_Departamento = d.ID_Departamento;
+-- select f.Nome, d.Nome from Funcionarios f 
+-- inner join Alocacoes a on f.ID_Funcionario = a.ID_Funcionario 
+-- inner join Departamentos d on a.ID_Departamento = d.ID_Departamento;
 
-select f.Nome, d.Nome, a.DataInicio from Funcionarios f 
-inner join Alocacoes a on f.ID_Funcionario = a.ID_Funcionario 
-inner join Departamentos d on a.ID_Departamento = d.ID_Departamento 
-where a.DataFim is null; 
+select Funcionarios.Nome, Departamentos.Nome
+from Alocacoes
+inner join Funcionarios on 
+    Alocacoes.ID_Funcionario = Funcionarios.ID_Funcionario
+inner join Departamentos on
+    Alocacoes.ID_Departamento = Departamentos.ID_Departamento;
+
+
+-- select f.Nome, d.Nome, a.DataInicio from Funcionarios f 
+-- inner join Alocacoes a on f.ID_Funcionario = a.ID_Funcionario 
+-- inner join Departamentos d on a.ID_Departamento = d.ID_Departamento 
+-- where a.DataFim is null; 
+
+select 
+    Funcionarios.Nome, 
+    Departamentos.Nome, 
+    Alocacoes.DataInicio
+from Alocacoes
+inner join Funcionarios on 
+    Alocacoes.ID_Funcionario = Funcionarios.ID_Funcionario
+inner join Departamentos on
+    Alocacoes.ID_Departamento = Departamentos.ID_Departamento
+where Alocacoes.DataFim is null;
+
 
 select d.Nome, count(f.ID_Funcionario) from Funcionarios f
 inner join Alocacoes a on f.ID_Funcionario = a.ID_Funcionario
