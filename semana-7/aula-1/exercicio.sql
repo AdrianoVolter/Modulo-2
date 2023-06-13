@@ -12,7 +12,7 @@
 CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    idade INT NOT NULL,
+    idade INT NOT NULL, -- não pode ser negativo interger unsigned
     cidade VARCHAR(100) NOT NULL
 );
 
