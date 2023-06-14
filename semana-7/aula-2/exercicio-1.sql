@@ -54,11 +54,11 @@ select * from patio;
 
 
 -- Questão 1:
--- Exiba a placa e o nome dos donos de todos os veículos;
--- Exiba o CPF e o nome do cliente que possui o veículo de placa “JJJ-2020”;
--- Exiba a placa e a cor do veículo que possui o código de estacionamento 1;
--- Exiba a placa e o ano do veículo que possui o código de estacionamento 1;
--- Exiba a placa, o ano do veículo e a descrição de seu modelo, se ele possuir ano a partir de 2000.
+--(x) Exiba a placa e o nome dos donos de todos os veículos;
+--(x)Exiba o CPF e o nome do cliente que possui o veículo de placa “JJJ-2020”;
+--(x) Exiba a placa e a cor do veículo que possui o código de estacionamento 1;
+--(x) Exiba a placa e o ano do veículo que possui o código de estacionamento 1;
+--(x) Exiba a placa, o ano do veículo e a descrição de seu modelo, se ele possuir ano a partir de 2000.
 
 
 select v.placa, c.nome from veiculo v
@@ -68,7 +68,7 @@ select c.cpf, c.nome from veiculo v
 inner join cliente c on v.client_id = c.cliente_id
 where v.placa = 'JJJ-2020';
 
-select v.placa, m.descricao from veiculo v
+select v.placa, m.decricao from veiculo v
 inner join modelo m on v.modelo_id = m.modelo_id
 where v.id = 1;
 
@@ -76,9 +76,16 @@ select v.placa, m.ano from veiculo v
 inner join modelo m on v.modelo_id = m.modelo_id
 where v.id = 1;
 
-select v.placa, m.ano, m.descricao from veiculo v
+select v.placa, m.ano, m.decricao from veiculo v
 inner join modelo m on v.modelo_id = m.modelo_id
 where m.ano >= 2000;
+
+-- seleciona 
+select veiculo.placa, modelo.ano
+from veiculo
+join modelo on veiculo.modelo_id = modelo.modelo_id
+join estaciona on veiculo.id = estaciona.veiculo_id
+where estaciona.id = 1;
 
 
 
@@ -151,3 +158,11 @@ values (1, 1, 1, '2020-01-01', '2020-01-01', '08:00:00', '22:00:00')
 , (8, 8, 8, '2020-01-01', '2020-01-01', '08:00:00', '22:00:00')
 , (9, 9, 9, '2020-01-01', '2020-01-01', '08:00:00', '22:00:00')
 , (10, 10, 10, '2020-01-01', '2020-01-01', '08:00:00', '22:00:00');
+
+
+-- Questão 3:
+--() Exiba em ordem crescente o nome dos donos de todos os veículos;
+--() Exiba o cliente que estacionou o carro por mais horas;
+--() Exiba a quantidade de veículos por cliente estacionados em cada pátio. Informe o nome do proprietário, o nome do pátio e ordene do proprietário com mais carros para o proprietário com menos carros.
+--() Informe a média de horas alocadas para estacionamento por dia em cada pátio.
+--() Informe o cliente que permaneceu pelo menor tempo em algum dos pátios. Mostre o nome do cliente, o código do pátio e número de horas.
