@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram name="CloudGames">
+  <node id="0" name="Usuario" x="160" y="110" width="120" height="100">
+    <mxCell vertex="1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1">
+      <mxGeometry x="160" y="110" width="120" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="2" target="0">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="3" target="0">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="4" target="0">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="5" target="0">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="6" target="0">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="7" target="0">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </node>
+  <node id="1" name="Plataforma" x="320" y="40" width="120" height="80">
+    <mxCell vertex="1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1">
+      <mxGeometry x="320" y="40" width="120" height="80" as="geometry"/>
+    </mxCell>
+  </node>
+  <node id="2" name="Genero" x="320" y="130" width="120" height="80">
+    <mxCell vertex="1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1">
+      <mxGeometry x="320" y="130" width="120" height="80" as="geometry"/>
+    </mxCell>
+  </node>
+  <node id="3" name="Jogo" x="500" y="130" width="120" height="100">
+    <mxCell vertex="1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1">
+      <mxGeometry x="500" y="130" width="120" height="100" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="1" target="3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell edge="1" parent="1" source="2" target="3">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </node>
+  <mxCell id="1" parent
