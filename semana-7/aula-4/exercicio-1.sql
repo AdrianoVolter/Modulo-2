@@ -376,8 +376,8 @@ SELECT to_char(date '2022-01-01', 'Day'); -- Saturday
 --(x) 3- Liste os clientes que possuem mais de 1 carro cadastrado
 --(x) 4- Exiba os pátios que possuem uma capacidade superior a 10 e que possuam pelo menos um estacionamento realizado
 --() 5- Exiba os pátios que possuem uma capacidade superior a 10 e, somados os carros estacionados em algum momento no pátio, o resultado seja pelo menos 40% da sua capacidade do pátio.
---() 6- Selecione todos os clientes cujo nome possui a sequência "Silva" em qualquer parte.
---() 7- Selecione todos os clientes cujo nome começa com a letra "A".
+--(x) 6- Selecione todos os clientes cujo nome possui a sequência "Silva" em qualquer parte.
+--(x) 7- Selecione todos os clientes cujo nome começa com a letra "A".
 
 
 -- 1
@@ -410,11 +410,15 @@ group by p.endereco, p.capacidade
 having p.capacidade > 10;
 
 -- 5 
-select p.endereco, p.capacidade
+select 
+  p.endereco, 
+  p.capacidade,
+  count(*) as quantidade,
+  (cast(count(*) as float) / p.capacidade) * 100 as percentual
 from patio p
 join estaciona e on e.patio_id = p.id
 group by p.endereco, p.capacidade
-having p.capacidade > 10 and count(*) > 0;
+having p.capacidade > 10 and (cast(count(*) as float) / p.capacidade) * 100 >= 40;
 
 -- 6
 select c.nome
