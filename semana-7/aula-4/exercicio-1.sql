@@ -161,11 +161,11 @@ values (1, 1, 1, '2020-01-01', '2020-01-01', '08:00:00', '22:00:00')
 
 
 -- Questão 3:
---() Exiba em ordem crescente o nome dos donos de todos os veículos;
---() Exiba o cliente que estacionou o carro por mais horas;
---() Exiba a quantidade de veículos por cliente estacionados em cada pátio. Informe o nome do proprietário, o nome do pátio e ordene do proprietário com mais carros para o proprietário com menos carros.
---() Informe a média de horas alocadas para estacionamento por dia em cada pátio.
---() Informe o cliente que permaneceu pelo menor tempo em algum dos pátios. Mostre o nome do cliente, o código do pátio e número de horas.
+--(x) Exiba em ordem crescente o nome dos donos de todos os veículos;
+--(x) Exiba o cliente que estacionou o carro por mais horas;
+--(x) Exiba a quantidade de veículos por cliente estacionados em cada pátio. Informe o nome do proprietário, o nome do pátio e ordene do proprietário com mais carros para o proprietário com menos carros.
+--(x) Informe a média de horas alocadas para estacionamento por dia em cada pátio.
+--(x) Informe o cliente que permaneceu pelo menor tempo em algum dos pátios. Mostre o nome do cliente, o código do pátio e número de horas.
 
 
 --  exemmplo professor 
@@ -339,3 +339,89 @@ join modelo m on m.id = v.modelo_id
 where c.nome  = 'Carlos Rodrigues';
 
 
+
+select date(dataEntrada) as data, count(*) as quantidade
+from estaciona
+group by dataEntrada;
+
+
+
+select extract(year from dataEntrada) as ano, count(*) as quantidade
+from estaciona
+group by ano;
+
+
+
+select extract(month from dataEntrada) as mes, count(*) as quantidade
+from estaciona
+group by mes;
+
+
+
+select extract(day from dataEntrada) as dia, count(*) as quantidade
+from estaciona
+group by dia;
+
+
+
+select extract(hour from horarioEntrada) as hora, count(*) as quantidade --
+from estaciona
+group by hora;
+
+SELECT to_char(date '2022-01-01', 'Day'); -- Saturday
+
+
+--(x) 1- Liste os modelos de veículos que possuem mais de 1 unidade cadastrada;
+--(x) 2- Obtenha a média de anos dos modelos de veículos que tenham no mínimo 1 unidade cadastrada;
+--(x) 3- Liste os clientes que possuem mais de 1 carro cadastrado
+--(x) 4- Exiba os pátios que possuem uma capacidade superior a 10 e que possuam pelo menos um estacionamento realizado
+--() 5- Exiba os pátios que possuem uma capacidade superior a 10 e, somados os carros estacionados em algum momento no pátio, o resultado seja pelo menos 40% da sua capacidade do pátio.
+--() 6- Selecione todos os clientes cujo nome possui a sequência "Silva" em qualquer parte.
+--() 7- Selecione todos os clientes cujo nome começa com a letra "A".
+
+
+-- 1
+select m.descricao, count(*) as quantidade  
+from veiculo v  
+join modelo m on m.id = v.modelo_id
+group by m.descricao
+having count(*) > 1;
+
+-- 2
+select avg(m.ano) as media
+from veiculo v
+join modelo m on m.id = v.modelo_id
+group by m.descricao
+having count(*) > 1;
+
+--3
+select c.nome, count(*) as quantidade
+from cliente c
+join veiculo v on v.cliente_id = c.id
+group by c.nome
+having count(*) > 1;
+
+
+-- 4 
+select p.endereco, p.capacidade
+from patio p
+join estaciona e on e.patio_id = p.id
+group by p.endereco, p.capacidade
+having p.capacidade > 10;
+
+-- 5 
+select p.endereco, p.capacidade
+from patio p
+join estaciona e on e.patio_id = p.id
+group by p.endereco, p.capacidade
+having p.capacidade > 10 and count(*) > 0;
+
+-- 6
+select c.nome
+from cliente c
+where c.nome like '%Silva%';
+
+-- 7
+select c.nome
+from cliente c
+where c.nome like 'A%';
