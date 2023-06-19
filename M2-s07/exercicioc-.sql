@@ -72,7 +72,8 @@ values (4, 4, 100.00, 1, '2020-11-01'),
       
 select * from venda;
 
---update venda set valor_produto = 500 where id_produto = 1;
+--update nas ta belas
+
 update venda 
 set valor_produto = 500
 where id_produto = 1;
@@ -85,3 +86,12 @@ select Valor_produto
 from venda v
 where id_produto = 4;    
       
+
+
+-- excluindo registros
+
+delete from produto
+where id_produto = 14;
+
+delete from produto
+where id_produto > 50;
