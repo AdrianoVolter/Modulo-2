@@ -7,8 +7,8 @@ create table usuario (
     email varchar(100),
     dt_nascimento date ,
     cpf varchar(100),
-    rg varchar(100),
-    check  
+    rg varchar(100)  
+     
 );
 
 select * from usuario;
@@ -29,16 +29,12 @@ select * from jogo;
 -- tabela: plataforma
 create table plataforma (
     id serial primary key,
-    nome varchar(100)
+    nome varchar(100),
+    fk_jogo integer references jogo(id),
+    fk_usuario integer references usuario(id)
 );
 
 select * from plataforma;
 
--- tabela: genero
-create table genero (
-    id serial primary key,
-    nome varchar(100)
-);
 
-select * from genero;
 
