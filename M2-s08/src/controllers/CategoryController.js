@@ -5,8 +5,14 @@ module.exports = {
     const categories = await Category.findAll({
       attributes: ['id', 'name', 'created_at', 'updated_at'],
     });
-        return res.json(categories);
-    },
+
+    if(!categories){
+      return res.status(400).json({ error: 'Categories not found' });
+    }else{
+      return res.json({menssage: 'Categories found', categories});
+    }
+  },
+    
 };
 
 
