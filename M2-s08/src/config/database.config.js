@@ -1,7 +1,7 @@
 const { config } = require('dotenv');
 
 config();
-//console.log(process.env);
+
 
 module.exports={
     host: process.env.HOST,

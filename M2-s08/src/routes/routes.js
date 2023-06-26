@@ -1,10 +1,9 @@
 const express = require('express')
-
 const routes = express.Router()
+const CategoryControllers = require('../controllers/CategoryController')
 
-const CategoryController = require('../controllers/CategoryController')
 
-routes.get('/categories', CategoryController.index)
-routes.post('/categories', CategoryController.store)
+routes.get('/categories', CategoryControllers.index);
+
 
 module.exports = routes
