@@ -15,6 +15,13 @@ const Trainees = connection.define('trainees', {
     have_special_needs: STRING,
     created_at: DATE,
     updated_at: DATE
-});
+// }, {
+//     underscored: true,
+//     timestamps: true,
+//     createdAt: 'created_at',
+//     updatedAt: 'updated_at',
+//     tableName: 'trainees'
+}
+);
 
 module.exports = Trainees;

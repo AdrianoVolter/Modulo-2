@@ -4,6 +4,7 @@ const CategoryControllers = require('../controllers/CategoryController')
 
 
 routes.get('/categories', CategoryControllers.index);
+routes.post('/categories', CategoryControllers.store);
 
 
 module.exports = routes
