@@ -2,8 +2,8 @@ const { config } = require('dotenv');
 
 config();
 
-
 module.exports={
+
     host: process.env.HOST,
     dialect: process.env.DIALECT,
     username: process.env.USERNAMEDB,
@@ -15,3 +15,4 @@ module.exports={
         underscoredAll: true,
     }
 };
+
