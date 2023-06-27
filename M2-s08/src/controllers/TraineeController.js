@@ -1,4 +1,5 @@
 const Trainees = require('../models/Trainee');
+const Sequelize = require('sequelize');
 
 module.exports = {
     async index(req, res) {
@@ -23,6 +24,14 @@ module.exports = {
             mother_name, 
             have_special_needs
          } = req.body;
+
+        const traineeExists = await Trainees.findOne({ where: { 
+            [Sequelize.Op.or]: [{cpf: req.body.cpf}, {rg: req.body.rg}]
+         } });
+
+        if (traineeExists) {
+            return res.status(400).json({ error: 'Trainee already exists' });
+        }
 
         const trainee = await Trainees.create({ 
             name, 
