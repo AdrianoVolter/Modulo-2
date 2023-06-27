@@ -11,5 +11,7 @@ routes.post('/categories', CategoryControllers.store);
 routes.get('/trainees', TraineeControllers.index);
 //create a trainee
 routes.post('/trainees', TraineeControllers.store);
+//get trainee by id
+routes.get('/trainees/:id', TraineeControllers.show);
 
 module.exports = routes

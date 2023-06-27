@@ -51,5 +51,17 @@ module.exports = {
         }else {
             return res.status(201).json({ message: 'Trainee created', trainee });
         }
+    },
+    //get by id
+    async show(req, res) {
+        const { id } = req.params;
+
+        const trainee = await Trainees.findByPk(id);
+
+        if (!trainee) {
+            return res.status(400).json({ error: 'Trainee not found' });
+        }else {
+            return res.json({ message: 'Trainee found', trainee });
+        }
     }
 };
