@@ -9,5 +9,7 @@ routes.get('/categories', CategoryControllers.index);
 routes.post('/categories', CategoryControllers.store);
 //get all trainees
 routes.get('/trainees', TraineeControllers.index);
+//create a trainee
+routes.post('/trainees', TraineeControllers.store);
 
 module.exports = routes
