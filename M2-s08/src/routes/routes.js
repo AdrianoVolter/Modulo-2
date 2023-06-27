@@ -13,5 +13,7 @@ routes.get('/trainees', TraineeControllers.index);
 routes.post('/trainees', TraineeControllers.store);
 //get trainee by id
 routes.get('/trainees/:id', TraineeControllers.show);
+//update trainee by id
+routes.put('/trainees/:id', TraineeControllers.update);
 
 module.exports = routes
