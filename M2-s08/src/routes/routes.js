@@ -19,5 +19,7 @@ routes.put('/trainees/:id', TraineeControllers.update);
 
 //get all companies
 routes.get('/companies', CompanyControllers.index);
+//create a company
+routes.post('/companies', CompanyControllers.store);
 
 module.exports = routes
