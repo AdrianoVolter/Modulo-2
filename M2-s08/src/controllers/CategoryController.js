@@ -20,7 +20,7 @@ module.exports = {
     if(!category){
       return res.status(400).json({ error: 'Category not created' });
     }else{
-      return res.json({menssage: 'Category created', category});
+      return res.status(201).json({menssage: 'Category created', category});
     }
        }
   

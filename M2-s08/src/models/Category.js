@@ -1,5 +1,5 @@
 const {connection} = require('../database/connection');
-const {STRING,DATE} = require('sequelize');
+//const {STRING,DATE} = require('sequelize');
 const { DataTypes } = require('sequelize');
 
 const Category = connection.define('categories', {
