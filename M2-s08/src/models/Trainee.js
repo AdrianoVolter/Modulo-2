@@ -11,6 +11,11 @@ const Trainee = connection.define('trainees', {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+            isEmail: {
+                msg: 'Invalid email'
+            }
+        }
       },
       rg: {
         type: DataTypes.STRING,
