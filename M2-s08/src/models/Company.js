@@ -1,6 +1,6 @@
 const {connection} = require('../database/connection');
 //const {STRING,DATE} = require('sequelize');
-const { DataTypes, Sequelize: DataTypes } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 
 
 const Company = connection.define('companies', {
@@ -55,12 +55,12 @@ const Company = connection.define('companies', {
       created_at: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updated_at: {
         type: DataTypes.DATE, 
         allowNull: false,
-        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     
 });
