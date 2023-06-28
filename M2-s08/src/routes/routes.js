@@ -23,5 +23,7 @@ routes.get('/companies', CompanyControllers.index);
 routes.post('/companies', CompanyControllers.store);
 //get company by id
 routes.get('/companies/:id', CompanyControllers.show);
+//update company by id
+routes.put('/companies/:id', CompanyControllers.update);
 
 module.exports = routes

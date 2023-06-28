@@ -81,4 +81,54 @@ module.exports = {
             return res.status(400).json({ error: 'Company not found , error: ' + error });
         }
     },
+    //update by id
+    async update(req, res) {
+        try {
+            const { id } = req.params;
+            const { 
+                cnpj, 
+                company_name, 
+                contact, 
+                cep, 
+                address, 
+                neighborhood, 
+                city, 
+                state, 
+                number, 
+                complement, 
+                rh_analyst_name, 
+                supervisor_name 
+            } = req.body;
+            const companyExists = await Company.findOne({ where: 
+                {
+                [Sequelize.Op.or]: [{cnpj: req.body.cnpj}, {company_name: req.body.company_name}],
+                [Sequelize.Op.not]: [{id: req.params.id}]
+            } });
+            if (companyExists) {
+                return res.status(400).json({ error: 'Company already exists' });
+            }
+            const company = await Company.findByPk(id);
+            if (!company) {
+                return res.status(400).json({ error: 'Company not found' });
+            }else {
+                await company.update({ 
+                    cnpj, 
+                    company_name, 
+                    contact, 
+                    cep, 
+                    address, 
+                    neighborhood, 
+                    city, 
+                    state, 
+                    number, 
+                    complement, 
+                    rh_analyst_name, 
+                    supervisor_name 
+                });
+                return res.json({ message: 'Company updated', company });
+            }
+        } catch (error) {
+            return res.status(400).json({ error: 'Company not updated , error: ' + error });
+        }
+    }
 }
