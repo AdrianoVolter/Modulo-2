@@ -33,5 +33,7 @@ routes.post('/contracts', ContractControllers.store);
 routes.get('/contracts', ContractControllers.index);
 //get contract by id
 routes.get('/contracts/:id', ContractControllers.show);
+//update contract by id
+routes.patch('/contracts/:id', ContractControllers.update);
 
 module.exports = routes

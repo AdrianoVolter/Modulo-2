@@ -86,5 +86,41 @@ module.exports = {
         } catch (error) {
             return res.status(400).json({ error: 'Contract not found' });
         }
-    }
+    },
+
+    async update (req, res) {
+        try {
+            const {id} = req.params;
+            const {
+                trainee_id,
+                category_id,
+                company_id,
+                start_validity,
+                end_validity,
+                status,
+                remuneration,
+                extra
+            } = req.body;
+
+            const contract = await Contract.findByPk(id);
+
+            if (!contract) {
+                return res.status(400).json({ error: 'Contract not found' });
+            }else {
+                await contract.update({
+                    trainee_id,
+                    category_id,
+                    company_id,
+                    start_validity,
+                    end_validity,
+                    status,
+                    remuneration,
+                    extra
+                });
+                return res.status(200).json({ message: 'Contract updated', contract });
+            }
+        } catch (error) {
+            return res.status(400).json({ error: 'Contract not updated' });
+        }
+    },
 }
