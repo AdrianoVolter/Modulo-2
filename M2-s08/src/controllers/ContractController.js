@@ -9,7 +9,12 @@ module.exports = {
     async index (req, res) {
         try {
             const contracts = await Contract.findAll({
-               
+               order: [['id', 'DESC']],
+                include: [
+                    { model: Trainee, as: 'trainee'
+                   
+                 },
+                ]
             });
             return res.status(200).json({ 
                 message: 'All contracts',

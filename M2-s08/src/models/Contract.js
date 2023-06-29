@@ -1,5 +1,6 @@
 const {connection} = require('../database/connection');
 const { DataTypes, Sequelize } = require('sequelize');
+const Trainee = require('./Trainee');
 
 const Contract = connection.define('contracts', {
    
@@ -74,5 +75,7 @@ const Contract = connection.define('contracts', {
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
 });
+
+Contract.belongsTo(Trainee, {foreignKey: 'trainee_id', allowNull: false});
 
 module.exports = Contract;
