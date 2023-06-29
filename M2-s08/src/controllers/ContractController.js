@@ -11,9 +11,10 @@ module.exports = {
             const contracts = await Contract.findAll({
                order: [['id', 'DESC']],
                 include: [
-                    { model: Trainee, as: 'trainee'
-                   
-                 },
+                    { model: Trainee, as: 'trainee'},
+                    { model: Company, as: 'company'},
+                    { model: Category, as: 'category'}
+                    
                 ]
             });
             return res.status(200).json({ 

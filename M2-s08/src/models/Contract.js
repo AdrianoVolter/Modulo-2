@@ -1,6 +1,8 @@
 const {connection} = require('../database/connection');
 const { DataTypes, Sequelize } = require('sequelize');
 const Trainee = require('./Trainee');
+const Company = require('./Company');
+const Category = require('./Category');
 
 const Contract = connection.define('contracts', {
    
@@ -77,5 +79,7 @@ const Contract = connection.define('contracts', {
 });
 
 Contract.belongsTo(Trainee, {foreignKey: 'trainee_id', allowNull: false});
+Contract.belongsTo(Company, {foreignKey: 'company_id', allowNull: false});
+Contract.belongsTo(Category, {foreignKey: 'category_id', allowNull: false});
 
 module.exports = Contract;
