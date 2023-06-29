@@ -3,6 +3,7 @@ const routes = express.Router()
 const CategoryControllers = require('../controllers/CategoryController');
 const TraineeControllers = require('../controllers/TraineeController');
 const CompanyControllers = require('../controllers/CompanyController');
+const ContractControllers = require('../controllers/ContractController');
 
 //get all categories
 routes.get('/categories', CategoryControllers.index);
@@ -25,5 +26,8 @@ routes.post('/companies', CompanyControllers.store);
 routes.get('/companies/:id', CompanyControllers.show);
 //update company by id
 routes.put('/companies/:id', CompanyControllers.update);
+
+//create a contract
+routes.post('/contracts', ContractControllers.store);
 
 module.exports = routes
