@@ -1,9 +1,8 @@
 const {connection} = require('../database/connection');
-//const {STRING,DATE} = require('sequelize');
 const { DataTypes, Sequelize } = require('sequelize');
 
-
 const Trainee = connection.define('trainees', {
+
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -52,8 +51,7 @@ const Trainee = connection.define('trainees', {
         type: DataTypes.DATE, 
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-    
+      }, 
 });
 
 module.exports = Trainee;
