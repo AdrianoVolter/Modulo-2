@@ -11,7 +11,14 @@ const Contract = connection.define('contracts', {
         references: {
             model: 'trainees',
             key: 'id'
+        },
+        //validar se id existe na tabela trainees
+        validate: {
+            isInt: {
+                msg: 'id do trainee inválido'
+            }
         }
+             
     },
     category_id: {
         type: DataTypes.INTEGER,
@@ -32,12 +39,22 @@ const Contract = connection.define('contracts', {
     start_validity: {
         type: DataTypes.DATEONLY,
         allowNull: false,
-        start_validity: Sequelize.literal('CURRENT_TIMESTAMP'),
+        validate: {
+            isDate: {
+                msg: 'formato de data inválido'
+            }
+        }
+
     },
     end_validity: {
         type: DataTypes.DATEONLY,
         allowNull: false,
-        end_validity: Sequelize.literal('CURRENT_TIMESTAMP'),
+        validate: {
+            isDate: {
+                msg: 'formato de data inválido',
+                args: true
+            }
+        }
     },
     status: {
         type: DataTypes.BOOLEAN,

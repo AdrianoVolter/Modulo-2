@@ -43,7 +43,7 @@ module.exports = {
                 return res.status(201).json({ message: 'Contract created', contract });
             }
         } catch (error) {
-            return res.status(400).json({ error: 'Contract not created' });
+            return res.status(400).json({ error: 'This contract not CREATED' });
         }
     }
 }
