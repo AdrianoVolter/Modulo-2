@@ -29,5 +29,7 @@ routes.put('/companies/:id', CompanyControllers.update);
 
 //create a contract
 routes.post('/contracts', ContractControllers.store);
+//get all contracts
+routes.get('/contracts', ContractControllers.index);
 
 module.exports = routes

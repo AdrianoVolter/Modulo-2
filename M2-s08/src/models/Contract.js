@@ -1,7 +1,5 @@
 const {connection} = require('../database/connection');
-//const {STRING,DATE} = require('sequelize');
 const { DataTypes, Sequelize } = require('sequelize');
-
 
 const Contract = connection.define('contracts', {
    
@@ -12,13 +10,11 @@ const Contract = connection.define('contracts', {
             model: 'trainees',
             key: 'id'
         },
-        //validar se id existe na tabela trainees
         validate: {
             isInt: {
                 msg: 'id do trainee inválido'
             }
-        }
-             
+        }         
     },
     category_id: {
         type: DataTypes.INTEGER,
@@ -44,7 +40,6 @@ const Contract = connection.define('contracts', {
                 msg: 'formato de data inválido'
             }
         }
-
     },
     end_validity: {
         type: DataTypes.DATEONLY,
@@ -78,7 +73,6 @@ const Contract = connection.define('contracts', {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
-
 });
 
 module.exports = Contract;

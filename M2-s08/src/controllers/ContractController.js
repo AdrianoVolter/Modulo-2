@@ -5,6 +5,21 @@ const Category = require('../models/Category');
 const Sequelize = require('sequelize');
 
 module.exports = {
+
+    async index (req, res) {
+        try {
+            const contracts = await Contract.findAll({
+               
+            });
+            return res.status(200).json({ 
+                message: 'All contracts',
+                contracts });
+        } catch (error) {
+            console.log(error); // Log the actual error to the console
+            return res.status(400).json({ error: 'An error occurred while fetching contracts' });
+        }
+    },
+
     async store (req, res) {
         try {
             const { 
