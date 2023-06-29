@@ -54,4 +54,5 @@ const Trainee = connection.define('trainees', {
       }, 
 });
 
+
 module.exports = Trainee;

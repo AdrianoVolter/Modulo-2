@@ -82,4 +82,5 @@ Contract.belongsTo(Trainee, {foreignKey: 'trainee_id', allowNull: false});
 Contract.belongsTo(Company, {foreignKey: 'company_id', allowNull: false});
 Contract.belongsTo(Category, {foreignKey: 'category_id', allowNull: false});
 
+
 module.exports = Contract;

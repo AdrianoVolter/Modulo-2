@@ -14,7 +14,7 @@ module.exports = {
                     { model: Trainee, as: 'trainee'},
                     { model: Company, as: 'company'},
                     { model: Category, as: 'category'}
-                    
+
                 ]
             });
             return res.status(200).json({ 
@@ -22,7 +22,7 @@ module.exports = {
                 contracts });
         } catch (error) {
             console.log(error); // Log the actual error to the console
-            return res.status(400).json({ error: 'An error occurred while fetching contracts' });
+            return res.status(400).json({ error: 'Ops !! An error occurred while fetching contracts' });
         }
     },
 
@@ -65,6 +65,26 @@ module.exports = {
             }
         } catch (error) {
             return res.status(400).json({ error: 'This contract not CREATED' });
+        }
+    },
+
+    async show (req, res) {
+        try {
+            const contract = await Contract.findByPk(req.params.id, {
+                include: [
+                    { model: Trainee, as: 'trainee'},
+                    { model: Company, as: 'company'},
+                    { model: Category, as: 'category'}
+
+                ]
+            });
+            if (!contract) {
+                return res.status(400).json({ error: 'Contract not found' });
+            }else {
+                return res.status(200).json({ message: 'Contract found', contract });
+            }
+        } catch (error) {
+            return res.status(400).json({ error: 'Contract not found' });
         }
     }
 }

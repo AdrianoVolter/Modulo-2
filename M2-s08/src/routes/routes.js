@@ -31,5 +31,7 @@ routes.put('/companies/:id', CompanyControllers.update);
 routes.post('/contracts', ContractControllers.store);
 //get all contracts
 routes.get('/contracts', ContractControllers.index);
+//get contract by id
+routes.get('/contracts/:id', ContractControllers.show);
 
 module.exports = routes
