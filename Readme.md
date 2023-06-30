@@ -21,6 +21,8 @@
     <li>Cors</li>
 </ul>
 
+***
+### Node js 
 Iniciar um projeto node
 
 ```bash
@@ -38,7 +40,18 @@ Inicie o servidor de desenvolvimento com o comando:
 ```
 
 ****
+### Sql com Postgres e DBeaver 
+<ul>
+    <li>Modelando Classes e Relacionamento</li>
+    <li>SQL - Tipo de Dados</li>
+    <li>DDL</li>
+    <li>DML</li>
+    <li>Implementando o Modelo com Tabelas</li>
+    
+</ul>
 
+
+***
 ### Comandos do sequelize-cli 
 
 Instalando sequlize-cli
@@ -58,8 +71,9 @@ Reverter a migração mais recente que foi executada no banco de dados
     npx sequelize-cli db:migrate:undo
 ```
 
-
+***
 ## Adriano Jose Volter
 ### Link do repositório [Click aqui !](https://github.com/AdrianoVolter/Modulo-2)
 
 ### Meu perfil do GitHub  [ Click aqui !](https://github.com/AdrianoVolter)
+***
