@@ -42,16 +42,20 @@ Inicie o servidor de desenvolvimento com o comando:
 ### Comandos do sequelize-cli 
 
 Instalando sequlize-cli
-```
+```bash
     npm install sequelize-cli —save-dev
 ```
 Criar a migration
-```
+```bash
     npx sequelize-cli migration:generate --name <nome-da migration>
 ```
-Cria a tabela no banco de dados 
-```
+Executa as migrações para o banco de dados 
+```bash
     npx sequelize-cli db:migrate
+```
+Reverter a migração mais recente que foi executada no banco de dados 
+```bash
+    npx sequelize-cli db:migrate:undo
 ```
 
 
