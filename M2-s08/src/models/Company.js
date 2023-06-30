@@ -1,7 +1,5 @@
 const {connection} = require('../database/connection');
-//const {STRING,DATE} = require('sequelize');
 const { DataTypes, Sequelize } = require('sequelize');
-
 
 const Company = connection.define('companies', {
     cnpj: {
@@ -62,7 +60,6 @@ const Company = connection.define('companies', {
         allowNull: false,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-    
 });
 
 module.exports = Company;
