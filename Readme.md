@@ -1,5 +1,6 @@
 ## Modulo 2  Back-End  |  curso FullStack   Senai/LAB365 | 
 
+***
 ### Tecnologias utilizadas
 
 
@@ -9,6 +10,7 @@
   </a>
 </p>
 
+***
 ### Dependências usando Npm
 <ul>
     <li>Express</li>
