@@ -71,12 +71,21 @@ module.exports = {
     async show (req, res) {
         try {
             const contract = await Contract.findByPk(req.params.id, {
+                //select do contrato , nome do trainee , nome da empresa e nome da categoria
+                attributes: ['id', 'remuneration', 'extra', 'start_validity', 'end_validity', 'status'],  
                 include: [
-                    { model: Trainee, as: 'trainee'},
-                    { model: Company, as: 'company'},
-                    { model: Category, as: 'category'}
+                    // { model: contract, attributes: ['id', 'remuneration', 'extra']},
+                    { model: Trainee, attributes: ['name','cpf'] },
+                    { model: Company, attributes: ['company_name'] },
+                    { model: Category, attributes: ['name'] }
+                  ]
+                // include: [
+                //     { model: Trainee, as: 'trainee'},
+                //     { model: Company, as: 'company'},
+                //     { model: Category, as: 'category'}
 
-                ]
+                // ],
+                // attributes: ['id', 'remuneration', 'extra']
             });
             if (!contract) {
                 return res.status(400).json({ error: 'Contract not found' });
