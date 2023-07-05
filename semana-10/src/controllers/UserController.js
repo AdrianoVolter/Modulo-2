@@ -1,5 +1,5 @@
-const { User  } = require('../models/user')
-const { JWT } = require('../utils/jwt')
+const { sign } = require('jsonwebtoken');
+const { User  } = require('../models/User');
 
 class UserController{
     async createOneUser(request, response){
@@ -44,10 +44,7 @@ class UserController{
             const user = await User.findOne({
                 where:{email:email}
             })
-
             console.log(user)
-
-            const token = JWT.generateToken(user)
     
             if (user.password === password){
                 console.log("Senha Igual")
