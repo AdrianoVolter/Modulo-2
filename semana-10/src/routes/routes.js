@@ -4,6 +4,7 @@ const CategoryControllers = require('../controllers/CategoryController');
 const TraineeControllers = require('../controllers/TraineeController');
 const CompanyControllers = require('../controllers/CompanyController');
 const ContractControllers = require('../controllers/ContractController');
+const UserController = require('../controllers/UserController');
 
 //get all categories
 routes.get('/categories', CategoryControllers.index);
@@ -35,5 +36,10 @@ routes.get('/contracts', ContractControllers.index);
 routes.get('/contracts/:id', ContractControllers.show);
 //update contract by id
 routes.patch('/contracts/:id', ContractControllers.update);
+
+//create a user
+routes.post('/users', UserController.createOneUser);
+//login user
+routes.post('/users/login', UserController.loginUser);
 
 module.exports = routes
