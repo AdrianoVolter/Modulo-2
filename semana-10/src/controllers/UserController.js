@@ -4,6 +4,23 @@ const { config } = require('dotenv');
 config();
 
 class UserController{
+
+
+    async getAllUsers(request, response){
+        try {
+            const data = await User.findAll()
+            return response.status(200).send(data)
+        } catch (error) {
+            return response.status(400).send(
+                {
+                    message: "Falha na operação de listar usuários",
+                    cause: error.message
+                }
+            )
+        }
+    }
+    
+
     async createOneUser(request, response){
 
         try {
@@ -54,7 +71,7 @@ class UserController{
 
                 console.log(process.env.SECRET_JWT)
 
-                const token = sign(payload, "chocolate")
+                const token = sign(payload, process.env.SECRET_JWT, {expiresIn: "1h"})
                 console.log(token)
                 console.log("Senha Igual")
                 return response.status(200).send({token}) 

@@ -5,11 +5,14 @@ const TraineeControllers = require('../controllers/TraineeController');
 const CompanyControllers = require('../controllers/CompanyController');
 const ContractControllers = require('../controllers/ContractController');
 const UserController = require('../controllers/UserController');
+const { auth } = require('../middleware/auth');
 
 //get all categories
 routes.get('/categories', CategoryControllers.index);
 //create a category
 routes.post('/categories', CategoryControllers.store);
+//get category by id
+routes.get('/categories/:id', auth ,CategoryControllers.show);
 //get all trainees
 routes.get('/trainees', TraineeControllers.index);
 //create a trainee
@@ -18,6 +21,7 @@ routes.post('/trainees', TraineeControllers.store);
 routes.get('/trainees/:id', TraineeControllers.show);
 //update trainee by id
 routes.put('/trainees/:id', TraineeControllers.update);
+
 
 //get all companies
 routes.get('/companies', CompanyControllers.index);
@@ -41,5 +45,7 @@ routes.patch('/contracts/:id', ContractControllers.update);
 routes.post('/users', UserController.createOneUser);
 //login user
 routes.post('/users/login', UserController.loginUser);
+//get all users
+routes.get('/users', UserController.getAllUsers);
 
 module.exports = routes
