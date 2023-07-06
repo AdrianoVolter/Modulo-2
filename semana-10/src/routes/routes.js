@@ -1,6 +1,6 @@
 const express = require('express')
 const routes = express.Router()
-const CategoryControllers = require('../controllers/CategoryController');
+
 const TraineeControllers = require('../controllers/TraineeController');
 const CompanyControllers = require('../controllers/CompanyController');
 const ContractControllers = require('../controllers/ContractController');
@@ -11,20 +11,7 @@ const PermissionController = require('../controllers/PermissionController');
 const PermissionRoleController = require('../controllers/PermissionRoleController');
 //const { auth } = require('../middleware/auth');
 
-//get all categories
-routes.get('/categories', CategoryControllers.index);
-//create a category
-routes.post('/categories', CategoryControllers.store);
-//get category by id
-routes.get('/categories/:id', CategoryControllers.listOneCategory);
-//get all trainees
-routes.get('/trainees', TraineeControllers.index);
-//create a trainee
-routes.post('/trainees', TraineeControllers.store);
-//get trainee by id
-routes.get('/trainees/:id', TraineeControllers.show);
-//update trainee by id
-routes.put('/trainees/:id', TraineeControllers.update);
+
 
 
 //get all companies
