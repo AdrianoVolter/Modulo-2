@@ -5,10 +5,12 @@ const TraineeControllers = require('../controllers/TraineeController');
 const CompanyControllers = require('../controllers/CompanyController');
 const ContractControllers = require('../controllers/ContractController');
 const UserController = require('../controllers/UserController');
+const RoleController = require('../controllers/RoleController');
+const UserRoleController = require('../controllers/UserRoleController');
 const { auth } = require('../middleware/auth');
 
 //get all categories
-routes.get('/categories', CategoryControllers.index);
+routes.get('/categories',auth, CategoryControllers.index);
 //create a category
 routes.post('/categories', CategoryControllers.store);
 //get category by id
@@ -46,6 +48,21 @@ routes.post('/users', UserController.createOneUser);
 //login user
 routes.post('/users/login', UserController.loginUser);
 //get all users
-routes.get('/users',auth, UserController.getAllUsers);
+routes.get('/users', UserController.getAllUsers);
+
+
+//get all roles
+routes.get('/roles', RoleController.index);
+//create a role
+routes.post('/roles', RoleController.store);
+
+
+//get all users_roles
+routes.get('/users_roles', UserRoleController.index);
+//create a user_role
+routes.post('/users_roles', UserRoleController.store);
+
+
+
 
 module.exports = routes

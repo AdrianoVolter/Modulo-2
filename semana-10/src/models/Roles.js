@@ -1,5 +1,6 @@
-const { connection } = require('../config/database');
-const { DataTypes, Model } = require('sequelize');
+const { connection } = require('../database/connection')
+const { DataTypes } = require('sequelize');
+//const User_role = require('./Users_roles.js');
 
 const Role = connection.define('roles', {
     description: {
@@ -14,16 +15,28 @@ const Role = connection.define('roles', {
                 msg: 'campo descrição deve ter entre 3 e 50 caracteres'
             }
         }
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'campo data de criação não pode ser vazio'
+            }
+        }
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: 'campo data de atualização não pode ser vazio'
+            }
+        }
     }
-}, {
-    paranoid: true,
-    timestamps: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at',
-    deletedAt: 'deleted_at',
-    underscored: true,
-    freezeTableName: true,
-    tableName: 'roles'
 });
+
+
+
 
 module.exports = Role;

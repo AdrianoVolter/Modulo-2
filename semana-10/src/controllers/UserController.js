@@ -72,7 +72,7 @@ class UserController{
 
                 console.log(process.env.SECRET_JWT)
 
-                const token = sign(payload, process.env.SECRET_JWT, {expiresIn: "1h"})
+                const token = sign(payload, process.env.SECRET_JWT, {expiresIn: 300})
                 console.log(token)
                 console.log("Senha Igual")
                 return response.status(200).send({token}) 

@@ -1,8 +1,9 @@
 const { INTEGER, STRING, DATE } = require('sequelize')
 const { connection } = require('../database/connection')
+//const User_role = require('./Users_roles.js');
 
 
-const User = connection.define("user", {
+const User = connection.define("users", {
     traineeId: {
         type: INTEGER,
         references: {
@@ -32,5 +33,9 @@ const User = connection.define("user", {
     createdAt: DATE,
     updatedAt: DATE
 })
+
+
+
+
 
 module.exports = { User }

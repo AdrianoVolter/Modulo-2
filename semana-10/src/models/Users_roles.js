@@ -1,5 +1,7 @@
-const { connection } = require('../config/database');
-const { DataTypes, Model } = require('sequelize');
+const { connection } = require('../database/connection')
+const { DataTypes } = require('sequelize');
+//const User = require('./User.js');
+//const Role = require('./Roles.js');
 
 const User_role = connection.define('users_roles', {
     user_id: {
@@ -35,8 +37,11 @@ const User_role = connection.define('users_roles', {
     updatedAt: 'updated_at',
     deletedAt: 'deleted_at',
     underscored: true,
-    freezeTableName: true,
-    tableName: 'users_roles'
+   
 });
+
+
+
+
 
 module.exports = User_role;
