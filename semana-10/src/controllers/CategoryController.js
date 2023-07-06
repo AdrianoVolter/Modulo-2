@@ -1,7 +1,7 @@
 const Category = require('../models/Category');
 const { verify } = require('jsonwebtoken')
 const { config } = require('dotenv')
-
+//const { CategoryServices } = require('../services/CategoryService')
 
 config()
 
@@ -28,24 +28,37 @@ module.exports = {
     }
        },
 
-  async show(req, res) {
+  async listOneCategory (req, res) {
+
     const { Authorization } = req.headers
     console.log(Authorization)
     console.log(verify(Authorization, process.env.SECRET))
 
-    if(verify(Authorization, process.env.SECRET)){
-      const { id } = req.params;
-      const category = await Category.findByPk(id);
 
-      if(!category){
-        return res.status(400).json({ error: 'Category not found' });
-      }else{
-        return res.json({menssage: 'Category found', category});
-      }
-    }else{
-      return res.status(401).json({ error: 'Unauthorized' });
+    if (verify(Authorization, process.env.SECRET)) {
+      const { id } = req.params
+
+      const data = await Category.findByPk(id)
+
+      return res.status(200).send(data)
     }
-},
+    else {
+      return res.status(401).send({"msg": "Acesso Negado"})
+    }
+    
+  },
+
+  // async updateOneCategory (request, response) {
+  //   const { id } = request.params
+  //   const { name } = request.body
+    
+  //   await Category.update(
+  //     { name },
+  //     { where: { id }}
+  //   )
+
+  //   return response.status(204).send()
+  // }
   
 };
 

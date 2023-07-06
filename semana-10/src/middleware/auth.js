@@ -20,7 +20,12 @@ module.exports = {
             }
     }
             catch (error) {
-                return res.status(401).json({ error: 'Unauthorized' });
+                console.log("ERROR  " + error)
+                return res.status(401).json({ 
+                    error: 'Unauthorized',
+                    cause: error.message
+
+            });
         }
 
     }

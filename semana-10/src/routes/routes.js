@@ -12,7 +12,7 @@ routes.get('/categories', CategoryControllers.index);
 //create a category
 routes.post('/categories', CategoryControllers.store);
 //get category by id
-routes.get('/categories/:id', auth ,CategoryControllers.show);
+routes.get('/categories/:id', auth ,CategoryControllers.listOneCategory);
 //get all trainees
 routes.get('/trainees', TraineeControllers.index);
 //create a trainee
@@ -46,6 +46,6 @@ routes.post('/users', UserController.createOneUser);
 //login user
 routes.post('/users/login', UserController.loginUser);
 //get all users
-routes.get('/users', UserController.getAllUsers);
+routes.get('/users',auth, UserController.getAllUsers);
 
 module.exports = routes

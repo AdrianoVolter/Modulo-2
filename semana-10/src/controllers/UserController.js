@@ -1,6 +1,7 @@
 const { sign } = require('jsonwebtoken');
 const { User  } = require('../models/User');
 const { config } = require('dotenv');
+const { auth } = require('../middleware/auth');
 config();
 
 class UserController{
@@ -19,7 +20,7 @@ class UserController{
             )
         }
     }
-    
+
 
     async createOneUser(request, response){
 
