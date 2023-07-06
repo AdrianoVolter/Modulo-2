@@ -7,6 +7,7 @@ const ContractControllers = require('../controllers/ContractController');
 const UserController = require('../controllers/UserController');
 const RoleController = require('../controllers/RoleController');
 const UserRoleController = require('../controllers/UserRoleController');
+const PermissionController = require('../controllers/PermissionController');
 const { auth } = require('../middleware/auth');
 
 //get all categories
@@ -63,6 +64,10 @@ routes.get('/users_roles', UserRoleController.index);
 routes.post('/users_roles', UserRoleController.store);
 
 
+//get all permissions
+routes.get('/permissions', PermissionController.index);
+//create a permission
+routes.post('/permissions', PermissionController.store);
 
 
 module.exports = routes

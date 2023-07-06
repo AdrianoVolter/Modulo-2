@@ -1,4 +1,4 @@
-const { connection } = require('../config/database');
+const { connection } = require('../database/connection')
 const { DataTypes, Model } = require('sequelize');
 
 const Permission = connection.define('permissions', {
