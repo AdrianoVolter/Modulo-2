@@ -29,24 +29,17 @@ module.exports = {
        },
 
   async listOneCategory (req, res) {
+    const { id } = req.params
+    const category = await Category.findByPk(id)
 
-    const { Authorization } = req.headers
-    console.log(Authorization)
-    console.log(verify(Authorization, process.env.SECRET))
-
-
-    if (verify(Authorization, process.env.SECRET)) {
-      const { id } = req.params
-
-      const data = await Category.findByPk(id)
-
-      return res.status(200).send(data)
+    if(!category){
+      return res.status(400).json({ error: 'Category not found' });
+    }else{
+      return res.json({menssage: 'Category found', category});
     }
-    else {
-      return res.status(401).send({"msg": "Acesso Negado"})
-    }
+       }
     
-  },
+  
 
   // async updateOneCategory (request, response) {
   //   const { id } = request.params
