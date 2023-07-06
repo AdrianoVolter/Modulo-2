@@ -1,33 +1,25 @@
 const express = require('express')
 const routes = express.Router()
 
-const RoleController = require('../controllers/RoleController');
-const UserRoleController = require('../controllers/UserRoleController');
-const PermissionController = require('../controllers/PermissionController');
-const PermissionRoleController = require('../controllers/PermissionRoleController');
-//const { auth } = require('../middleware/auth');
+const ContactRoutes = require('./ContractRoutes')
+const UserRoutes = require('./UserRoutes')
+const RolesRoutes = require('./RolesRoutes')
+const PermissionRoutes = require('./PermissionsRoutes')
+const UserRoleRoutes = require('./UsersRolesRoutes')
+const PermissionRoleRoutes = require('./PermissionsRolesRoutes')
+const CategoryRoutes = require('./CategoryRoutes')
+const CompaniesRoutes = require('./CompaniesRoutes')
+const TraineeRoutes = require('./TraineeRoutes')
 
-//get all roles
-routes.get('/roles', RoleController.index);
-//create a role
-routes.post('/roles', RoleController.store);
+routes.use(ContactRoutes)
+routes.use(UserRoutes)
+routes.use(RolesRoutes)
+routes.use(PermissionRoutes)
+routes.use(UserRoleRoutes)
+routes.use(PermissionRoleRoutes)
+routes.use(CategoryRoutes)
+routes.use(CompaniesRoutes)
+routes.use(TraineeRoutes)
 
-
-//get all users_roles
-routes.get('/users_roles', UserRoleController.index);
-//create a user_role
-routes.post('/users_roles', UserRoleController.store);
-
-
-//get all permissions
-routes.get('/permissions', PermissionController.index);
-//create a permission
-routes.post('/permissions', PermissionController.store);
-
-
-//get all permissions_roles
-routes.get('/permissions_roles', PermissionRoleController.index);
-//create a permission_role
-routes.post('/permissions_roles', PermissionRoleController.store);
 
 module.exports = routes
