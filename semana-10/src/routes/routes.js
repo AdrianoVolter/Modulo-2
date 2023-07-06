@@ -8,14 +8,15 @@ const UserController = require('../controllers/UserController');
 const RoleController = require('../controllers/RoleController');
 const UserRoleController = require('../controllers/UserRoleController');
 const PermissionController = require('../controllers/PermissionController');
-const { auth } = require('../middleware/auth');
+const PermissionRoleController = require('../controllers/PermissionRoleController');
+//const { auth } = require('../middleware/auth');
 
 //get all categories
-routes.get('/categories',auth, CategoryControllers.index);
+routes.get('/categories', CategoryControllers.index);
 //create a category
 routes.post('/categories', CategoryControllers.store);
 //get category by id
-routes.get('/categories/:id', auth ,CategoryControllers.listOneCategory);
+routes.get('/categories/:id', CategoryControllers.listOneCategory);
 //get all trainees
 routes.get('/trainees', TraineeControllers.index);
 //create a trainee
@@ -69,5 +70,10 @@ routes.get('/permissions', PermissionController.index);
 //create a permission
 routes.post('/permissions', PermissionController.store);
 
+
+//get all permissions_roles
+routes.get('/permissions_roles', PermissionRoleController.index);
+//create a permission_role
+routes.post('/permissions_roles', PermissionRoleController.store);
 
 module.exports = routes
